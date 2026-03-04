@@ -307,6 +307,7 @@
     <script>
 const auth = firebase.auth();
 const db = firebase.firestore();
+const BACKEND_URL = "https://adari-backend-rep-production.up.railway.app";
 
 
 auth.onAuthStateChanged(user => {
@@ -407,10 +408,10 @@ document.getElementById('paymentForm').addEventListener('submit', async (e) => {
   formData.append('screenshot', fileInput.files[0]);
 
   try {
-    const response = await fetch('http://localhost:5000/api/payment', {
-      method: 'POST',
-      body: formData
-    });
+    const response = await fetch(`${BACKEND_URL}/api/payment`, {
+  method: 'POST',
+  body: formData
+});
 
     if (!response.ok) throw new Error('Network response not ok');
 
